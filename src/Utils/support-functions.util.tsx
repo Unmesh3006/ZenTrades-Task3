@@ -66,69 +66,49 @@ export const cardData = [
 
 export const graph_1_data = [
   {
-    title: "Everett",
-    value: "80000",
+    name: "Everett",
+    value: 80000,
   },
-
   {
-    title: "Seattle",
-    value: "75000",
+    name: "Seattle",
+    value: 75000,
   },
-
   {
-    title: "Lynnwood",
-    value: "50000",
+    name: "Lynnwood",
+    value: 50000,
   },
-
   {
-    title: "Bothell",
-    value: "48000",
+    name: "Bothell",
+    value: 48000,
   },
-
   {
-    title: "Mukilteo",
-    value: "46000",
+    name: "Mukilteo",
+    value: 46000,
   },
-
   {
-    title: "Edmonds",
-    value: "35000",
+    name: "Edmonds",
+    value: 35000,
   },
 ];
 
-const graph_2_data = [
+export const graph_2_data = [
   {
-    title: "Service Plumbing",
-    value: "180000",
+    name: "Bid Work Plumbing",
+    value: "7500",
   },
 
   {
-    title: "Bid Work HVAC",
-    value: "135000",
+    name: "HWT Replacement",
+    value: "4600",
   },
 
   {
-    title: "Service HVAC",
-    value: "80000",
+    name: "Maintenance",
+    value: "4300",
   },
 
   {
-    title: "Bid Work Plumbing",
-    value: "75000",
-  },
-
-  {
-    title: "HWT Replacement",
-    value: "46000",
-  },
-
-  {
-    title: "Maintenance",
-    value: "43000",
-  },
-
-  {
-    title: "Maiterial Sales",
+    name: "Maiterial Sales",
     value: "2000",
   },
 ];
