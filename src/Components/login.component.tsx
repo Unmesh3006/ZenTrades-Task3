@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import { isEmail, validatePassword } from "../Utils/support-functions.util";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ShowPass from "../Assets/showpass.svg";
+import HidePass from "../Assets/hidepass.svg";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const handleValidation = () => {
     if (!isEmail(username)) {
@@ -20,6 +24,24 @@ const Login = () => {
       toast.error(passwordValidation);
       return;
     }
+     if (password == "SmartServTest@123") {
+      localStorage.setItem("token", "SmartServTest@123");
+      navigate("/dashboard");
+      return;
+    }
+
+    toast.error("Invalid Password");
+  };
+
+    const handleForgot = () => {
+    const email = "support@smartserv.io";
+    const subject = "Support Request"; // You can customize the subject
+
+    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
+
+    // Open the user's default email client
+    window.location.href = mailtoLink;
+    toast.success("Email Window opened");
   };
 
   const togglePasswordVisibility = () => {
@@ -62,43 +84,7 @@ const Login = () => {
                 className="absolute inset-y-0 right-0 px-3 flex items-center"
                 onClick={togglePasswordVisibility}
               >
-                {showPassword ? (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    className="h-6 w-6"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                ) : (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    className="h-6 w-6"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M2 12a10 10 0 1120 0 10 10 0 01-20 0z"
-                    />
-                  </svg>
-                )}
+               {showPassword ? <ShowPass /> : <HidePass />}
               </button>
             </div>
           </div>
@@ -111,7 +97,9 @@ const Login = () => {
             </button>
           </div>
           <div className="w-full h-16 flex items-center justify-center text-gray-400">
-            <button className="underline">Forgot Your Password?</button>
+            <button className="underline" onClick={handleForgot}>
+              Forgot Your Password?
+            </button>
           </div>
         </div>
       </div>
